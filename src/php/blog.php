@@ -1,5 +1,6 @@
 <?php
 
+
     include "conf.php";
     
     echo "<style>
@@ -15,13 +16,12 @@
             }
 </style>";
 
-    
     $dir = $_GET["dir"]; //get directory
     if ($dir == "")
     {
         $dir = $post_dir;   //If the folder wasnt specified, then use the posts folder
     }
-    $dh = opendir("/home/samathy/Git Projects/nodb-blog/src/php/posts");
+    $dh = opendir($post_dir);
     if ($dh == False)
     {
         echo "Could'nt open posts directory";

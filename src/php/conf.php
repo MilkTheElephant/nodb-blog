@@ -9,12 +9,11 @@
 
 
 // Directory to find posts in.
-
-$post_dir = "";
+$post_dir = getcwd()."/posts";
 
 
 //Page to send requests for specific posts/tags/postlists too:
-$display_page = "localhost/blog.php"
+$display_page = "localhost/blog.php";
 
 
 
