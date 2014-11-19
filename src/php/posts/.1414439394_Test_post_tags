@@ -1,0 +1,6 @@
+<style>
+    .a {margin: 5px;}
+</style>
+
+
+<i><a href="http://google.com">#tag1</a> <a href="http://google.com">#tag2</a></i>

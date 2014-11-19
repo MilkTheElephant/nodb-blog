@@ -10,15 +10,18 @@
 
 // Directory to find posts in.
 
-$post_dir = "/home/samathy/Git_Projects/nodb-blog/src/php/posts";
+$post_dir = "";
+
+
+//Page to send requests for specific posts/tags/postlists too:
+$display_page = "localhost/blog.php"
 
 
 
 
 
-// Blog display settings:
-
+// Blog post display settings:
 
 $border = False;
-$date = True;
-$tags = False;
+$show_dates = True;
+$show_tags = True;
