@@ -41,7 +41,7 @@
             echo "<div class='date'>";
             if ($show_dates == True) //show the dates if specified.
             {
-                echo "<i style='text-align:left;'>".date("d-m-Y",intval(substr($f, 0, strpos($f, "_"))))."</i><br>";
+                echo "<i style='text-align:left;'>".date($date_format,intval(substr($f, 0, strpos($f, "_"))))."</i><br>";
             }
             echo "</div>";
             echo "<div class='tags'>"; //Show the post's tags if specified.
