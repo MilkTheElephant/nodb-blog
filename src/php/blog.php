@@ -54,6 +54,6 @@
             echo $out;
         }
     }
-
+    echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
     return ""
 ?>

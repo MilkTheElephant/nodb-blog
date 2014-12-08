@@ -12,8 +12,10 @@
 $post_dir = getcwd()."/posts";
 
 
-//Page to send requests for specific posts/tags/postlists too:
-$display_page = "localhost/blog.php";
+//Page to send requests for specific posts/tags/postlists too
+//Loads this page when tags, Read More links, or links in a list of posts is clicked.
+//This page must call the blog() function somewhere on the page.
+$display_page = getcwd()."/blog.php";
 
 //Format of date displayed everywhere.
 //See http://php.net/manual/en/function.date.php for formatting options.
@@ -28,6 +30,13 @@ $date_format = "dS F Y";  //10th October 2014
 
 // Blog post display settings:
 
-$border = False;
-$show_dates = True;
-$show_tags = True;
+$show_hr  = False; //shows/hides horizontal line under post title.
+$show_dates = True; //shows/hides tags in post display
+$show_tags = True; //shows/hides date in post display
+
+
+
+
+
+$version = "0.1b";
+?>
