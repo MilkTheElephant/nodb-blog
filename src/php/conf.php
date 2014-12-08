@@ -10,6 +10,8 @@
 
 // Directory to find posts in.
 $post_dir = getcwd()."/posts";
+// Directory to find tags in.
+$tags_dir = getcwd()."/tags";
 
 
 //Page to send requests for specific posts/tags/postlists too
@@ -37,6 +39,6 @@ $show_tags = True; //shows/hides date in post display
 
 
 
-
-$version = "0.1b";
+//The version of nodb-blog Changing this may cause some features to be disabled.
+$version = "0.1beta";
 ?>

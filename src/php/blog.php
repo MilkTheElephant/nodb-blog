@@ -47,11 +47,31 @@
             echo "<div class='tags'>"; //Show the post's tags if specified.
             if ($show_tags  == True)
             {
-                echo file_get_contents($dir."/.".$f."_tags");  //print the tags out
+                //$tags =  file_get_contents($dir."/.".$f."_tags");  //print the tags out
+                $tagfile = $dir."/.".$f."_tags";
+                $tags = fopen($tagfile, "r");
+                if ($tags == FALSE)
+                {
+                    echo 'ERROR: No tags file';
+                }
+                else
+                {
+                    while (($line = fgets($tags)) !== FALSE )
+                    {
+                        echo "<a href='/sbarratt/blog.php?dir=".$tags_dir."/".$line."'>#".$line."</a>";
+                    }
+                }
             }
             echo "</div></div><br>";
             $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
-            echo $out;
+            if ($out == FALSE)
+            {
+                echo "ERROR: Cannot find file:".$dire."/".$f."";
+            }
+            else
+            {
+                echo $out;
+            }
         }
     }
     echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
