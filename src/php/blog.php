@@ -1,9 +1,6 @@
 <?php
 
-
-
 function blog_out($max_posts) //main blog out function. Prints out and formats posts. takes int as max number of posts to print.
-
 {    
 
     include "conf.php";
@@ -68,7 +65,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                     {
                         while (($line = fgets($tags)) !== FALSE )
                         {
-                            echo "<a href='/sbarratt/blog.php?dir=".$line."'>#".$line."</a>";
+                            echo "<a href='/sbarratt/blog.php?tag=".$line."'>#".$line."</a>";
                         }
                     }
                 }
@@ -76,7 +73,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
                 if ($out == FALSE)
                 {
-                    echo "ERROR: Cannot find file:".$dire."/".$f."";
+                    echo "ERROR: Cannot find file:".$dir."/".$f."";
                 }
                 else
                 {
@@ -88,4 +85,121 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
         echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
         return "";
 }
+
+function folder_display() //Function displays all the posts in a set directiory. This is passed by GET and can be tags.
+{
+    include "/home/samathy/Git Projects/nodb-blog/src/php/conf.php";
+
+    if (empty($_GET["tag"]))
+    {
+        $dir = $post_dir."/".$_GET["dir"];
+    }
+    else if (empty($_GET["dir"]))
+    {
+        $dir = $tags_dir."/".$_GET["tag"];
+    }
+    else if (empty($_GET["tag"]) || empty($_GET["dir"])) //if there wasnt a name specified, then ensure that the directory is .
+    {
+        $dir = $post_dir; //If there was no folder specified, display the posts directory.
+    }
+
+
+    $dh = opendir($dir);
+    if ($dh == FALSE)
+    {
+        echo "Cannot find folder; Did you take a wrong turn?";
+    }
+    
+    while (false !== ($filename = readdir($dh)))
+    {
+        $files[] = $filename;
+    }
+    
+    sort($files);
+
+
+    if (count($files) >2) //If there is only the files: . and .. in the directory, then display an error.
+    {
+        foreach ($files as $f) //for each file.....
+        {
+            if ($f != "." && $f != ".." && !strpos($f,"_desc")) //ignore . and ..
+            {
+                echo'<div class="itemcontainer">
+                     <div class="itemdetailsname">';
+                        if (is_dir($dir."/".$f) == TRUE) //If filename is a dir make it a link to a dir.
+                        {
+                            echo '<a href="documents.php?dir='.$dir."/".$f.'">'.$f.'</a>';
+                        }
+                        else //else, just make it a file name.
+                        {
+                            if (!strpos($f, "_desc"))  //Make sure that we dont display _desc files.
+                            {
+                                echo $f; 
+                            }
+                        }
+              echo '</div>
+                    <div class="itemdetails">
+                    <div class="details1">';
+                      $desc = fopen($dir."/".$f."_desc", "r");
+                      if ($desc != FALSE) //if exists...but a bad version
+                      {
+                            echo file_get_contents($dir."/".$f."_desc");
+                      }
+                      echo '</div>
+                      <div class="details2">';
+                      if(is_dir($dir."/".$f) == TRUE)
+                      {
+                          echo "Directory";
+                      }
+                      else 
+                      {
+                        if ($dir != "." && $dir != "..")
+                        {
+                            echo "Size: ".filesize($dir."/".$f)." Bytes";
+                        }
+                        else
+                        {
+                            echo "Size: ".filesize($f)." Bytes";
+                        }
+                      }
+                      echo '</div>
+                          </div>';
+                      echo '<div class="btncontainer">';
+                      if (is_dir($dir."/".$f) == FALSE)
+                      {
+                        if ($dir != "." or $dir != "..")
+                        {
+                            echo '<div class="itembtns">
+                                    <a href="'.$dir."/".$f.'" download target="_blank" >Download Document</a></div>';
+                            //echo '</div>';
+                        }
+                         else
+                        {
+                            echo '<div class="itembtns">
+                                    <a href="'.$dir.$f.'">Download Document</a></div>';
+                            //echo '</div>';
+                        }
+
+                        echo '<div class="itembtns">
+                                </div></div></div>
+                                ';
+                      }
+                      else
+                      {
+                          echo '</div></div>';
+                      }  
+            }
+        }
+
+        echo'</div>';
+     }
+     else
+     {
+        echo "<div style='text-align:center'><p>No documents to show. Did you take a wrong turn?</p></div></div>";
+     }
+        
+    sidebarleft_output("resources/docinfo.html"); //Show some info
+    echo '</div>';
+}
+
 ?>
