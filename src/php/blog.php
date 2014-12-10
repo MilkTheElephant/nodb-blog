@@ -122,7 +122,7 @@ function folder_display() //Function displays all the posts in a set directiory.
     {
         foreach ($files as $f) //for each file.....
         {
-            if ($f != "." && $f != ".." && !strpos($f,"_desc")) //ignore . and ..
+            if ($f != "." && $f != ".." && !strpos($f,"_desc") && substr($f, 0,1) != ".") //ignore . and .. and files beginning with .
             {
                 echo'<div class="itemcontainer">
                      <div class="itemdetailsname">';
@@ -153,7 +153,7 @@ function folder_display() //Function displays all the posts in a set directiory.
                       }
                       else 
                       {
-                        if ($dir != "." && $dir != "..")
+                        if ($dir != "." && $dir != ".." && substr($dir, 1) != ".")
                         {
                             echo date($date_format,intval(substr($f, 0, strpos($f, "_"))));
                         }
