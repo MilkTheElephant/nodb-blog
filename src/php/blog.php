@@ -155,11 +155,11 @@ function folder_display() //Function displays all the posts in a set directiory.
                       {
                         if ($dir != "." && $dir != "..")
                         {
-                            echo "Size: ".filesize($dir."/".$f)." Bytes";
+                            echo date($date_format,intval(substr($f, 0, strpos($f, "_"))));
                         }
                         else
                         {
-                            echo "Size: ".filesize($f)." Bytes";
+                            echo "";
                         }
                       }
                       echo '</div>
