@@ -164,30 +164,8 @@ function folder_display() //Function displays all the posts in a set directiory.
                       }
                       echo '</div>
                           </div>';
-                      echo '<div class="btncontainer">';
-                      if (is_dir($dir."/".$f) == FALSE)
-                      {
-                        if ($dir != "." or $dir != "..")
-                        {
-                            echo '<div class="itembtns">
-                                    <a href="'.$dir."/".$f.'" download target="_blank" >Download Document</a></div>';
-                            //echo '</div>';
-                        }
-                         else
-                        {
-                            echo '<div class="itembtns">
-                                    <a href="'.$dir.$f.'">Download Document</a></div>';
-                            //echo '</div>';
-                        }
-
-                        echo '<div class="itembtns">
-                                </div></div></div>
-                                ';
-                      }
-                      else
-                      {
-                          echo '</div></div>';
-                      }  
+                          echo '</div>';
+                        
             }
         }
 
