@@ -7,6 +7,11 @@
  * This file is ran as PHP, so be careful that anything in here is valid PHP syntax.
 *****************************************************/
 
+//Directory in which the folder for nodb-blog resides.
+//If you installed nodb-blog to anywhere else other than here you'll need to change this.
+$master_dir = "/var/www/"; 
+
+
 
 // Directory to find posts in.
 $post_dir = getcwd()."/posts";
