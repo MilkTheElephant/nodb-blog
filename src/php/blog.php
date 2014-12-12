@@ -88,7 +88,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
 
 function folder_display() //Function displays all the posts in a set directiory. This is passed by GET and can be tags.
 {
-    include $master_dir."/nodb-blog/src/php/conf.php";
+    include getcwd()."/nodb-blog/src/php/conf.php";
 
     if (empty($_GET["tag"]))
     {
