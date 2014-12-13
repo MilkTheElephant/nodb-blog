@@ -9,7 +9,7 @@
 
 //Directory in which the folder for nodb-blog resides.
 //If you installed nodb-blog to anywhere else other than here you'll need to change this.
-$master_dir = "/var/www/"; 
+$master_dir = "/var/www/sbarratt.co.uk"; 
 
 
 
