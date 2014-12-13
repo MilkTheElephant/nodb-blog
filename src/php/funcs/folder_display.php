@@ -3,7 +3,7 @@
 function folder_display() //Function displays all the posts in a set directiory. This is passed by GET and can be tags.
 {
     include "nodb-blog/src/php/conf.php";
-
+    
 
 
     if (empty($_GET["tag"]))
@@ -19,7 +19,6 @@ function folder_display() //Function displays all the posts in a set directiory.
         $dir = $post_dir; //If there was no folder specified, display the posts directory.
     }
 
-    $dir = "../posts/";
     $dh = opendir($dir);
     if ($dh == FALSE)
     {
