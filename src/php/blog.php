@@ -1,7 +1,7 @@
 <?php
 
 //  1 or "blog" = displays all posts, takes max posts as auxinfo
-//  2 or "folder" = displays folder
+//  2 = or "folder" =  displays folder
 
 
 function nodb_blog($content, $auxinfo)
