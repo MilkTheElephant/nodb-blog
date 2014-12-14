@@ -12,6 +12,7 @@ function nodb_blog($content, $auxinfo)
     if ($content == "blog" or $content == 1)
     {
         ///blog_out($auxinfo);
+        echo "Blog Out disabled because I didnt commit the file containing the function. Will commit when i can";
         return "";
     }
     else if ($content == "folder" or $content == 2)
