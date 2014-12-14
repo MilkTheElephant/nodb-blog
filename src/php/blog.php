@@ -2,12 +2,14 @@
 
 //  1 or "blog" = displays all posts, takes max posts as auxinfo
 //  2 = or "folder" =  displays folder
+//  3 = or "post" = Displays a specific post.
 
 
 function nodb_blog($content, $auxinfo)
 {
     //include "nodb-blog/src/php/funcs/blog_out.php";    
     include "nodb-blog/src/php/funcs/folder_display.php";
+    include "nodb-blog/src/php/funcs/post.php";
 
     if ($content == "blog" or $content == 1)
     {
@@ -21,6 +23,10 @@ function nodb_blog($content, $auxinfo)
         return "";
 
     }
-
+    else if ($content == "post" or $content == 3)
+    {
+        posts_display($auxinfo);
+        return "";
+    }
 }
 ?>
