@@ -47,16 +47,13 @@ function folder_display() //Function displays all the posts in a set directiory.
                         }
                         else //else, just make it a file name.
                         {
-                            if (!strpos($f, "_desc"))  //Make sure that we dont display _desc files.
-                            {
-                                echo $f; 
-                            }
+                            echo '<a href="blog.php?post='.$f.'">'.$f.'</a>'; 
                         }
               echo '</div>
                     <div class="itemdetails">
                     <div class="details1">';
                       $desc = fopen($dir."/".$f."_desc", "r");
-                      if ($desc != FALSE) //if exists...but a bad version
+                      if ($desc != FALSE) //if exists...but a bad version TODO use actual if exists
                       {
                             echo file_get_contents($dir."/".$f."_desc");
                       }
