@@ -6,12 +6,12 @@
 
 function nodb_blog($content, $auxinfo)
 {
-    include "funcs/blog_out.php";    
-    include "funcs/folder_display.php";
+    //include "nodb-blog/src/php/funcs/blog_out.php";    
+    include "nodb-blog/src/php/funcs/folder_display.php";
 
     if ($content == "blog" or $content == 1)
     {
-        blog_out($auxinfo);
+        ///blog_out($auxinfo);
         return "";
     }
     else if ($content == "folder" or $content == 2)
