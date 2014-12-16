@@ -2,7 +2,6 @@
 
 function folder_display() //Function displays all the posts in a set directiory. This is passed by GET and can be tags.
 {
-    echo getcwd();
     include "nodb-blog/src/php/conf.php";
     
 
