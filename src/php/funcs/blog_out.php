@@ -64,7 +64,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                     {
                         while (($line = fgets($tags)) !== FALSE )
                         {
-                            echo "<a href='/sbarratt/blog.php?tag=".$line."'>#".$line."</a>";
+                            echo "<a href='blog.php?tag=".$line."'>#".$line."</a>";
                         }
                     }
                 }
