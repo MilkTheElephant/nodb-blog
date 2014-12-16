@@ -7,9 +7,13 @@
  * This file is ran as PHP, so be careful that anything in here is valid PHP syntax.
 *****************************************************/
 
+//Set include directory.
+set_include_path(getcwd()."/nodb-blog/src/php/");
+
+
 //Directory in which the folder for nodb-blog resides.
 //If you installed nodb-blog to anywhere else other than here you'll need to change this.
-$master_dir = "/var/www/sbarratt.co.uk"; 
+$master_dir = "/var/www/"; 
 
 
 
