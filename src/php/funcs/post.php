@@ -2,7 +2,7 @@
 
 function posts_display($post)
 {
-    include "nodb-blog/src/php/conf.php";
+    include "conf.php";
     echo "<style>
         .date {
             text-align: left;
