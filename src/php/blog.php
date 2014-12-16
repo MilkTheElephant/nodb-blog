@@ -7,14 +7,14 @@
 
 function nodb_blog($content, $auxinfo)
 {
-    include "nodb-blog/src/php/funcs/blog_out.php";    
-    include "nodb-blog/src/php/funcs/folder_display.php";
-    include "nodb-blog/src/php/funcs/post.php";
+    include "conf.php";
+    include_once "funcs/blog_out.php";    
+    include_once "funcs/folder_display.php";
+    include_once "funcs/post.php";
 
     if ($content == "blog" or $content == 1)
     {
         blog_out($auxinfo);
-        echo "Blog Out disabled because I didnt commit the file containing the function. Will commit when i can";
         return "";
     }
     else if ($content == "folder" or $content == 2)
