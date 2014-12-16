@@ -2,8 +2,7 @@
 
 function folder_display() //Function displays all the posts in a set directiory. This is passed by GET and can be tags.
 {
-    include "nodb-blog/src/php/conf.php";
-    
+    include "conf.php";
 
 
     if (empty($_GET["tag"]))
@@ -80,15 +79,14 @@ function folder_display() //Function displays all the posts in a set directiory.
             }
         }
 
-        echo'</div>';
+        //echo'</div>';
      }
      else
      {
         echo "<div style='text-align:center'><p>No documents to show. Did you take a wrong turn?</p></div></div>";
      }
         
-    sidebarleft_output("resources/docinfo.html"); //Show some info
-    echo '</div>';
+    //echo '</div>';
 }
 
 ?>
