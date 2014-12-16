@@ -1,8 +1,9 @@
 <?php
+require_once "blog_out.php";
 
 function blog_out($max_posts) //main blog out function. Prints out and formats posts. takes int as max number of posts to print.
 {    
-    include "nodb-blog/src/php/conf.php";
+    include "conf.php";
    
     echo "<style>
             .date {
@@ -37,7 +38,6 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
         $count = 0;         //variable that holds how many posts we've printed. 
         foreach ($files as $f)
         {
-
             if ($count >= $max_posts)
             {
                 break;
@@ -81,7 +81,9 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
             }
             $count++;
         }
-        echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
-        return "";
+    echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
+        return;
 }
-?>
+
+
+
