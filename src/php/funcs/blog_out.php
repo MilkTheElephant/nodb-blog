@@ -77,7 +77,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 }
                 else
                 {
-                    echo $out;
+                    echo $out."<br>";
                 }
             }
             $count++;
