@@ -36,6 +36,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
         }
         
         $count = 0;         //variable that holds how many posts we've printed. 
+        rsort($files); 
         foreach ($files as $f)
         {
             if ($count >= $max_posts)
@@ -76,7 +77,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 }
                 else
                 {
-                    echo $out;
+                    echo $out."<br>";
                 }
             }
             $count++;
