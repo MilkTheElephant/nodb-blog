@@ -29,7 +29,7 @@ function folder_display() //Function displays all the posts in a set directiory.
         $files[] = $filename;
     }
     
-    sort($files);
+    rsort($files);
 
     if (count($files) >2) //If there is only the files: . and .. in the directory, then display an error.
     {
