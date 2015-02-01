@@ -15,6 +15,8 @@ TODO
 * Create a way to add posts via a web interface.
 * Create example site.
 * Allow nodb_blog() to handle http GET vars and work out what to display depending on that instead of making the developer do it.
+* Fix issue where all posts are being displayed even when a tag has been specified.
+* Add option for folder display to show what folder is being displayed.
 
 
 
