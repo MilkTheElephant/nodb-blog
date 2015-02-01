@@ -49,5 +49,5 @@ $show_tags = True; //shows/hides date in post display
 
 
 //The version of nodb-blog Changing this may cause some features to be disabled.
-$version = "1.0.3-beta.php";
+$version = "1.0.4-beta.php";
 ?>
