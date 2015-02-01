@@ -4,6 +4,7 @@ require_once "blog_out.php";
 function blog_out($max_posts) //main blog out function. Prints out and formats posts. takes int as max number of posts to print.
 {    
     include "conf.php";
+    include $small_link_dir."/src/php/small_link.php"; 
    
     echo "<style>
             .date {
@@ -19,11 +20,19 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
     </style>";
     
         $dir = $_GET["dir"]; //get directory
-        if ($dir == "")
+        $tag = $_GET["tag"];
+        
+        if ($dir == "" && $tag == "")
         {
             $dir = $post_dir;   //If the folder wasnt specified, then use the posts folder
         }
-        $dh = opendir($post_dir);
+
+        else if (!empty($tag))
+        {
+            $dir = $tags_dir."/".$tag."/";
+        }
+
+        $dh = opendir($dir);
         if ($dh == False)
         {
             echo "Could'nt open posts directory";
@@ -55,7 +64,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 echo "<div class='tags'>"; //Show the post's tags if specified.
                 if ($show_tags  == True)
                 {
-                    $tagfile = $dir."/.".$f."_tags";
+                    $tagfile = $post_dir."/.".$f."_tags";
                     $tags = fopen($tagfile, "r");
                     if ($tags == FALSE)
                     {
@@ -71,6 +80,11 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 }
                 echo "</div></div><br>";
                 $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
+                if ($small_link == True)
+                {
+                       //If small link is enabled then generate a small url and put oit at the bottom.
+                    small_link($small_link_domain."/".$display_page."?post=".$f); 
+                }
                 if ($out == FALSE)
                 {
                     echo "ERROR: Cannot find file:".$dir."/".$f."";
@@ -86,5 +100,5 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
         return;
 }
 
-
+?>
 
