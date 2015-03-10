@@ -44,6 +44,9 @@ $date_format = "dS F Y";  //10th October 2014
 $show_hr  = False; //shows/hides horizontal line under post title.
 $show_dates = True; //shows/hides tags in post display
 $show_tags = True; //shows/hides date in post display
+$show_short_link = True; //shows/hides shortened link. REQURES domain to be populated
+
+$domain = "";
 
 
 

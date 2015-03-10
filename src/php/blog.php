@@ -11,6 +11,7 @@ function nodb_blog($content, $auxinfo)
     include_once "funcs/blog_out.php";    
     include_once "funcs/folder_display.php";
     include_once "funcs/post.php";
+    include_once "funcs/unshorten.php";
 
     if ($content == "blog" or $content == 1)
     {
@@ -28,5 +29,17 @@ function nodb_blog($content, $auxinfo)
         posts_display($auxinfo);
         return "";
     }
+    else if ($content == "short" or $content == 4)
+    {
+        $return = unshorten($auxinfo);
+        echo $return;
+        if ($return != False)
+        {
+            $post = $return;
+        }
+        posts_display($post);
+    }
+
+
 }
 ?>
