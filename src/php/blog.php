@@ -32,7 +32,6 @@ function nodb_blog($content, $auxinfo)
     else if ($content == "short" or $content == 4)
     {
         $return = unshorten($auxinfo);
-        echo $return;
         if ($return != False)
         {
             $post = $return;
