@@ -84,7 +84,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                     echo "<div class='date'>";
                     $hash = md5($f);
                     $hash = substr($hash, 0, 6);
-                    echo "<a href='".$domain."/blog.php?p=".$hash."'>/".$hash."</a></div><br>";
+                    echo "<a href='".$domain."/blog.php?p=".$hash."'>".$short_link_prefix."/".$hash."</a></div><br>";
                 }
 
                 

@@ -45,6 +45,7 @@ $show_hr  = False; //shows/hides horizontal line under post title.
 $show_dates = True; //shows/hides tags in post display
 $show_tags = True; //shows/hides date in post display
 $show_short_link = True; //shows/hides shortened link. REQURES domain to be populated
+$short_link_prefix = "Sharing Link: "; //Text to prefix the sharing link with. Can be left blank
 
 $domain = "";
 
