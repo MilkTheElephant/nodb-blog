@@ -78,7 +78,17 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                         }
                     }
                 }
-                echo "</div></div><br>";
+                echo "</div>";
+                if ($show_short_link == True)
+                {
+                    echo "<div class='date'>";
+                    $hash = md5($f);
+                    $hash = substr($hash, 0, 6);
+                    echo "<a href='".$domain."/blog.php?p=".$hash."'>/".$hash."</a></div><br>";
+                }
+
+                
+                echo "</div><br>";
                 $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
                 if ($small_link == True)
                 {
