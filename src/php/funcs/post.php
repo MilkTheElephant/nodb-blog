@@ -41,7 +41,15 @@ function posts_display($post)
             }
         }
     }
-    echo "</div></div><br>";
+    echo '</div>';
+    if ($show_short_link == True)
+    {
+        echo "<div class='date'>";
+        $hash = md5($post);
+        $hash = substr($hash, 0, 6);
+        echo "<a href='".$domain."/blog.php?p=".$hash."'>".$short_link_prefix."/".$hash."</a></div><br>";
+    }
+    echo "</div><br>";
     $out = file_get_contents($post_dir."/".$post); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
     if ($out == FALSE)
     {
