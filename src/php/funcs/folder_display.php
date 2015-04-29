@@ -50,7 +50,7 @@ function folder_display() //Function displays all the posts in a set directiory.
                             {
                                 $name = substr($name, 0, strrpos($name, '.')); 
                             }
-                            echo '<a href="blog.php?post='.$name.'">'.$name.'</a>'; 
+                            echo '<a href="blog.php?post='.$f.'">'.$name.'</a>'; 
                         }
               echo '</div>
                     <div class="itemdetails">
