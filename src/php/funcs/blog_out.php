@@ -54,6 +54,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
             }
             if ($f != "." && $f != ".." && $f[0] != ".") //Don't print files starting with "." including the files "." and "..". 
             {
+                echo '<div class="post">';
                 echo '<div style="width: 100%;">';
                 echo "<div class='date'>";
                 if ($show_dates == True) //show the dates if specified.
@@ -89,13 +90,21 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
 
                 
                 echo "</div><br>";
-                $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
+                $pathFull = $dir."/".$f;
+                if (pathinfo($pathFull, PATHINFO_EXTENSION ) == "html" || pathinfo($pathFull, PATHINFO_EXTENSION ) == "" )      //Get the file extension of the file. If it is html the treat as normal html file. Else parse as markdown
+                {
+                    $out = file_get_contents($dir."/".$f); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
+                }
+                else if (  pathinfo($pathFull, PATHINFO_EXTENSION ) == "md")
+                {
+                    $out = `markdown --html4tags $pathFull`;
+                }
                 if ($small_link == True)
                 {
                        //If small link is enabled then generate a small url and put oit at the bottom.
                     small_link($small_link_domain."/".$display_page."?post=".$f); 
                 }
-                if ($out == FALSE)
+                if ($out == FALSE || $out == NULL)
                 {
                     echo "ERROR: Cannot find file:".$dir."/".$f."";
                 }
@@ -104,6 +113,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                     echo $out."<br>";
                 }
             }
+            echo "</div>";
             $count++;
         }
     echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';

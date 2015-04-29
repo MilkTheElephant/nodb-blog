@@ -17,6 +17,7 @@ function posts_display($post)
         </style>";
 
 
+    echo '<div class="post">';
     echo '<div style="width: 100%;">';
     echo "<div class='date'>";
     if ($show_dates == True) //show the dates if specified.
@@ -50,8 +51,17 @@ function posts_display($post)
         echo "<a href='".$domain."/blog.php?p=".$hash."'>".$short_link_prefix."/".$hash."</a></div><br>";
     }
     echo "</div><br>";
-    $out = file_get_contents($post_dir."/".$post); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
-    if ($out == FALSE)
+    $pathFull = $post_dir."/".$post;
+    if (pathinfo($pathFull, PATHINFO_EXTENSION ) == "html" || pathinfo($pathFull, PATHINFO_EXTENSION ) == "" )      //Get the file extension of the file. If it is html the treat as normal html file. Else parse as markdown
+    {
+        $out = file_get_contents($post_dir."/".$post); //Get post. TODO replace this with getting specific lines so that we can use plain text files instead of  HTML>
+    }
+    else if (  pathinfo($pathFull, PATHINFO_EXTENSION ) == "md")
+    {
+        $out = `markdown --html4tags $pathFull`;
+    }
+
+    if ($out == FALSE || $out == NULL)
     {
         echo "ERROR: Cannot find file:".$dir."/".$post."";
     }
@@ -59,7 +69,7 @@ function posts_display($post)
     {
         echo $out;
     }
-    
+    echo "</div>"; 
     return "";
     }
 
