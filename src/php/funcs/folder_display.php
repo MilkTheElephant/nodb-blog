@@ -45,7 +45,12 @@ function folder_display() //Function displays all the posts in a set directiory.
                         }
                         else //else, just make it a file name.
                         {
-                            echo '<a href="blog.php?post='.$f.'">'.str_replace("_", " ", substr($f, strpos($f, "_"), strlen($f))).'</a>'; 
+                            $name = str_replace("_", " ", substr($f, strpos($f, "_"), strlen($f)));
+                            if (strrpos($name, '.') != 0)
+                            {
+                                $name = substr($name, 0, strrpos($name, '.')); 
+                            }
+                            echo '<a href="blog.php?post='.$name.'">'.$name.'</a>'; 
                         }
               echo '</div>
                     <div class="itemdetails">
