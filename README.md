@@ -7,6 +7,7 @@ Features:
 
 * Displays blog posts in time order.
 * Supports tags.
+*Posts can be written in raw Markdown
 
 
 TODO
