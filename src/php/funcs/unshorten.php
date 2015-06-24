@@ -23,8 +23,8 @@ function unshorten($content)
         $hash = substr($hash, 0, 6);
 
         if ($hash == $content)
-        {
-            return trim($f, "/");
+        { // This file matches the short hash we were looking for - here we enforce a redirect
+            header("Location: /blog.php?p=".$f); // Assuming no output before this point, will send a HTTP Redirect
         }
      }
     echo "Invalid link";
