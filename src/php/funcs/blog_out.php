@@ -5,8 +5,9 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
 {    
     include "conf.php";
     include $small_link_dir."/src/php/small_link.php"; 
-   
-    echo "<style>
+
+    $return_string .= "<style>
+
             .date {
                     text-align: left;
                     width: 49%;
@@ -18,6 +19,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                     float: right;
                 }
     </style>";
+
     
         $dir = $_GET["dir"]; //get directory
         $tag = $_GET["tag"];
@@ -35,7 +37,7 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
         $dh = opendir($dir);
         if ($dh == False)
         {
-            echo "Could'nt open posts directory";
+            $return_string .= "Could'nt open posts directory";
             return 0;
         }
     
@@ -54,42 +56,42 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
             }
             if ($f != "." && $f != ".." && $f[0] != ".") //Don't print files starting with "." including the files "." and "..". 
             {
-                echo '<div class="post">';
-                echo '<div style="width: 100%;">';
-                echo "<div class='date'>";
+                $return_string .= '<div class="post">';
+                $return_string .= '<div style="width: 100%;">';
+                $return_string .= "<div class='date'>";
                 if ($show_dates == True) //show the dates if specified.
                 {
-                    echo "<i style='text-align:left;'>".date($date_format,intval(substr($f, 0, strpos($f, "_"))))."</i><br>";
+                    $return_string .= "<i style='text-align:left;'>".date($date_format,intval(substr($f, 0, strpos($f, "_"))))."</i><br>";
                 }
-                echo "</div>";
-                echo "<div class='tags'>"; //Show the post's tags if specified.
+                $return_string .= "</div>";
+                $return_string .= "<div class='tags'>"; //Show the post's tags if specified.
                 if ($show_tags  == True)
                 {
                     $tagfile = $post_dir."/.".$f."_tags";
                     $tags = fopen($tagfile, "r");
                     if ($tags == FALSE)
                     {
-                        echo 'ERROR: No tags file';
+                        $return_string .= 'ERROR: No tags file';
                     }
                     else
                     {
                         while (($line = fgets($tags)) !== FALSE )
                         {
-                            echo "<a href='blog.php?tag=".$line."'>#".$line."</a>";
+                            $return_string .= "<a href='blog.php?tag=".$line."'>#".$line."</a>";
                         }
                     }
                 }
-                echo "</div>";
+                $return_string .= "</div>";
                 if ($show_short_link == True)
                 {
-                    echo "<div class='date'>";
+                    $return_string .= "<div class='date'>";
                     $hash = md5($f);
                     $hash = substr($hash, 0, 6);
-                    echo "<a href='".$domain."/blog.php?p=".$hash."'>".$short_link_prefix."/".$hash."</a></div><br>";
+                    $return_string .= "<a href='".$domain."/blog.php?p=".$hash."'>".$short_link_prefix."/".$hash."</a></div><br>";
                 }
 
                 
-                echo "</div><br>";
+                $return_string .= "</div><br>";
                 $pathFull = $dir."/".$f;
                 if (pathinfo($pathFull, PATHINFO_EXTENSION ) == "html" || pathinfo($pathFull, PATHINFO_EXTENSION ) == "" )      //Get the file extension of the file. If it is html the treat as normal html file. Else parse as markdown
                 {
@@ -106,18 +108,18 @@ function blog_out($max_posts) //main blog out function. Prints out and formats p
                 }
                 if ($out == FALSE || $out == NULL)
                 {
-                    echo "ERROR: Cannot find file:".$dir."/".$f."";
+                    $return_string .= "ERROR: Cannot find file:".$dir."/".$f."";
                 }
                 else
                 {
-                    echo $out."<br>";
+                    $return_string .= $out."<br>";
                 }
             }
-            echo "</div>";
+            $return_string .= "</div>";
             $count++;
         }
-    echo '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
-        return;
+    $return_string .= '<br><div align="right">Powered by: <a href="https://github.com/MilkTheElephant/nodb-blog">Nodb-Blog - Version: '.$version.'</a></div>';
+        return $return_string;
 }
 
 ?>

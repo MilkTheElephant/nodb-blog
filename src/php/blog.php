@@ -13,20 +13,22 @@ function nodb_blog($content, $auxinfo)
     include_once "funcs/post.php";
     include_once "funcs/unshorten.php";
 
+    $return = "";
+
     if ($content == "blog" or $content == 1)
     {
-        blog_out($auxinfo);
-        return "";
+        $return = blog_out($auxinfo);
+        return $return;
     }
     else if ($content == "folder" or $content == 2)
     {
-        folder_display();
+        $return = folder_display();
         return "";
 
     }
     else if ($content == "post" or $content == 3)
     {
-        posts_display($auxinfo);
+        $return = posts_display($auxinfo);
         return "";
     }
     else if ($content == "short" or $content == 4)
