@@ -3,6 +3,7 @@
 //  1 or "blog" = displays all posts, takes max posts as auxinfo
 //  2 = or "folder" =  displays folder
 //  3 = or "post" = Displays a specific post.
+//  4 = or "short" = (Currently) Displays a specfic post
 
 
 function nodb_blog($content, $auxinfo)
