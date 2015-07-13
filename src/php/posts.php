@@ -1,11 +1,13 @@
 <?php
 
-    $dir = $_GET["dir"]; //get directory
+    $dir = str_replace("/","",$_GET["dir"]); // Get sub-directory and (basic) prevent escapes.
     if ($dir == "")
     {
-        $dir = "posts";   //If the folder wasnt specified, then use the posts folder
+        $dir = $post_dir;   //If the folder wasnt specified, then use the default posts folder (from config.php)
+    } else {
+        $dir = $post_dir."/".$dir; // If a sub was specified, append after the default folder
     }
-    $post = $_GET["post"];
+    $post = str_replace("/","",$_GET["post"]); // Hacky way to fix major security hole
     
     if ($post == "")
     {
